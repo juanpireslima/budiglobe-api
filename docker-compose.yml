@@ -1,0 +1,43 @@
+
+services:
+  budiglobe-api-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    ports:
+      - "3000:3000"
+    image: budiglobe-api-dev
+    container_name: budiglobe-api-dev
+    volumes:
+      - .:/app
+    environment:
+      - STAGE=dev
+      - PORT=3000
+  
+  budiglobe-api-debug:
+      build:
+        context: .
+        dockerfile: Dockerfile-debug
+      ports:
+        - "3000:3000"
+      image: budiglobe-api-debug
+      container_name: budiglobe-api-debug
+      volumes:
+        - .:/app
+      environment:
+        - STAGE=debug
+        - PORT=3000
+    
+  budiglobe-api:
+      build:
+        context: .
+        dockerfile: Dockerfile-prod
+      ports:
+        - "3000:3000"
+      image: budiglobe-api
+      container_name: budiglobe-api
+      volumes:
+        - .:/app
+      environment:
+        - STAGE=prod
+        - PORT=3000
