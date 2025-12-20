@@ -4,11 +4,13 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config as ormConfig } from '../ormconfig';
 import { ConfigModule } from '@nestjs/config';
+import { ExpenseModule } from './expense/expense.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(ormConfig),
+    ExpenseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
